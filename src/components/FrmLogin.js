@@ -1,21 +1,24 @@
 import React from 'react';
 import {View, Text, TextInput, Button, TouchableHighlight} from 'react-native';
 import { Input } from 'react-native-elements';
-import {Actions} from 'react-native-router-flux';
+import { connect } from 'react-redux';
+
 import Styles from '../styles/FrmLoginCss';
 
-export default props = ({ navigation }) =>(
+const FrmLogin = props = ({ navigation }) =>{
+  console.log(props);
+  return(
   <View style = {Styles.Container}>
     <View style={Styles.TopBox}>
       <Text style={Styles.TopText}> WhatsApp Clone</Text>
     </View>
 
     <View style={Styles.MidBox}>
-      <Input style={Styles.MidInput} placeholder="E-mail"/>
-      <Input style={Styles.MidInput} placeholder="Senha"/>
-
-      <TouchableHighlight onPress={() => Actions.frmCadastro()}>
-        <Text style={Styles.MidText}>Ainda não tem cadastro? Cadastre-se </Text>
+      <TextInput value={props.email} style={Styles.MidInput} placeholder="E-mail"/>
+      <TextInput value={props.senha} style={Styles.MidInput} placeholder="Senha"/>
+      
+      <TouchableHighlight onPress={() => navigation.navigate('Cadastro')}>
+        <Text style={Styles.MidText}>Ainda não tem cadastro? Cadastre-se</Text>
       </TouchableHighlight>
     </View>
 
@@ -23,8 +26,15 @@ export default props = ({ navigation }) =>(
       <Button style={Styles.DownButton} color="#115E54" title="Acessar" onPress={() => false} />
     </View>
   </View>
-);
+)};
 
 props.navigationOptions = {
   title: 'Login',
 }
+
+const mapStateToProps = state => ({
+   email: state.AutenticacaoReducer.email,
+   senha: state.AutenticacaoReducer.senha
+});
+
+export default connect(mapStateToProps, null)(FrmLogin);
