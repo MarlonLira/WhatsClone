@@ -7,9 +7,9 @@ export default props = ({ navigation }) =>(
   <View style = {Styles.Container}>
 
     <View style={Styles.TopBox}>
-      <Input style={Styles.TopInput} placeholder="Nome"/>
-      <Input style={Styles.TopInput} placeholder="E-mail"/>
-      <Input style={Styles.TopInput} placeholder="Senha"/>
+      <TextInput style={Styles.TopInput} placeholder="Nome" underlineColorAndroid="green"/>
+      <TextInput style={Styles.TopInput} placeholder="E-mail" underlineColorAndroid="green"/>
+      <TextInput style={Styles.TopInput} placeholder="Senha" underlineColorAndroid="green"/>
     </View>
 
     <View style={Styles.DownBox}>

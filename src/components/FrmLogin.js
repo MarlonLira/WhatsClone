@@ -5,8 +5,9 @@ import { connect } from 'react-redux';
 
 import Styles from '../styles/FrmLoginCss';
 
-const FrmLogin = props = ({ navigation }) =>{
-  console.log(props);
+const FrmLogin = (props) => {
+  const { navigation } = props;
+
   return(
   <View style = {Styles.Container}>
     <View style={Styles.TopBox}>
@@ -14,8 +15,8 @@ const FrmLogin = props = ({ navigation }) =>{
     </View>
 
     <View style={Styles.MidBox}>
-      <TextInput value={props.email} style={Styles.MidInput} placeholder="E-mail"/>
-      <TextInput value={props.senha} style={Styles.MidInput} placeholder="Senha"/>
+      <TextInput value={props.email} style={Styles.MidInput} placeholder="E-mail" underlineColorAndroid="green"/>
+      <TextInput value={props.senha} style={Styles.MidInput} placeholder="Senha" underlineColorAndroid="green"/>
       
       <TouchableHighlight onPress={() => navigation.navigate('Cadastro')}>
         <Text style={Styles.MidText}>Ainda não tem cadastro? Cadastre-se</Text>
@@ -28,7 +29,7 @@ const FrmLogin = props = ({ navigation }) =>{
   </View>
 )};
 
-props.navigationOptions = {
+FrmLogin.navigationOptions = {
   title: 'Login',
 }
 
