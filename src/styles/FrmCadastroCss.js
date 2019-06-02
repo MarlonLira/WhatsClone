@@ -5,6 +5,12 @@ export default cadastroCss = StyleSheet.create({
     flex: 1,
     padding: 10
   },
+
+  BgImage:{
+    flex: 1,
+    width: null
+  },
+  
   TopBox: {
     flex: 4,
     justifyContent: "center"

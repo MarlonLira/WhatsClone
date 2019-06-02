@@ -6,6 +6,11 @@ export default loginCss = StyleSheet.create({
     padding: 10
   },
 
+  BgImage:{
+    flex: 1,
+    width: null
+  },
+
   TopBox: {
     flex: 1,
     justifyContent: "center",
@@ -13,7 +18,8 @@ export default loginCss = StyleSheet.create({
   },
 
   TopText: {
-    fontSize: 25
+    fontSize: 25,
+    color: '#fff'
   },
 
   MidBox: {
@@ -27,7 +33,8 @@ export default loginCss = StyleSheet.create({
 
   MidText: {
     fontSize: 20,
-    height: 45
+    height: 45,
+    color: '#fff'
   },
 
   DownBox: {
