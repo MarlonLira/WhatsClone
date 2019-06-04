@@ -1,3 +1,5 @@
+import firebase from 'firebase'
+
 export const modifyEmail = (email) => {
   return{
     type: 'modify_email',
@@ -19,10 +21,30 @@ export const modifyName = (name) => {
   }
 }
 
-export const cadastraUsuario = ({name, email, pass}) => {
-
-  alert(name + ' /' + email + '/' + pass);
+export const userRegister = ({name, email, pass}, navigation) => {
+  firebase.auth().createUserWithEmailAndPassword(email, pass)
+    .then(user => {
+        if(user){
+          navigation.navigate('Login')
+        }
+      }
+    )
+    .catch(err => alert(err));
   return {
-    type: 'teste'
+    type: 'register_user'
+  }
+}
+
+export const userLogin = ({email, pass}, navigation) => {
+  firebase.auth().signInWithEmailAndPassword(email, pass)
+    .then( user => {
+          if(user){
+            navigation.navigate('Inicio')
+          }
+        }
+      )
+    .catch(err => alert(err));
+  return {
+    type: 'login_user'
   }
 }

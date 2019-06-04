@@ -4,7 +4,7 @@ import { Input } from 'react-native-elements';
 import { connect } from 'react-redux';
 
 import Styles from '../styles/FrmCadastroCss';
-import { modifyEmail, modifyPass, modifyName, cadastraUsuario } from '../actions/AutentitacaoActions';
+import { modifyEmail, modifyPass, modifyName, userRegister } from '../actions/AutentitacaoActions';
 
 class FrmCadastro extends Component {
 
@@ -12,10 +12,9 @@ class FrmCadastro extends Component {
     const { navigation } = props;
   }
 
-  _cadastraUsuario(){
+  _userRegister(){
     const  {name, email, pass} = this.props;
-    
-    this.props.cadastraUsuario({name, email, pass});
+    this.props.userRegister({name, email, pass}, this.props.navigation);
   }
 
   render(){
@@ -54,7 +53,7 @@ class FrmCadastro extends Component {
           </View>
   
           <View style={Styles.DownBox}>
-            <Button style={Styles.DownButton} color="#115E54" title="Cadastrar" onPress={() => this._cadastraUsuario()} />
+            <Button style={Styles.DownButton} color="#115E54" title="Cadastrar" onPress={() => this._userRegister()} />
           </View>
         </View>
       </ImageBackground>
@@ -73,4 +72,4 @@ const mapStateToProps = state => ({
   pass: state.AutenticacaoReducer.pass
 });
 
-export default connect(mapStateToProps, {modifyEmail, modifyPass, modifyName, cadastraUsuario })(FrmCadastro);
+export default connect(mapStateToProps, {modifyEmail, modifyPass, modifyName, userRegister })(FrmCadastro);
