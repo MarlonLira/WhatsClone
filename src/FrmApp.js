@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import {Provider} from 'react-redux'
-import {createStore} from 'redux'
-import firebase from 'firebase'
+import {Provider} from 'react-redux';
+import {createStore} from 'redux';
+import firebase from 'firebase';
 
 import Routes from './Routes';
-import reducers from './reducers/index'
+import reducers from './reducers/index';
 
 class FrmApp extends Component{
   

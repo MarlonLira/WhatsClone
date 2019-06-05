@@ -1,21 +1,28 @@
 import React, {Component} from 'react';
-import {View, Text, TextInput, Button, TouchableHighlight, ImageBackground} from 'react-native';
+import {View, Text, TextInput, TouchableHighlight, ImageBackground} from 'react-native';
 import { connect } from 'react-redux';
 import { modifyEmail, modifyPass, userLogin } from '../actions/AutentitacaoActions';
+import { Input, Button } from 'react-native-elements';
 
 import Styles from '../styles/FrmLoginCss';
 
 class FrmLogin extends Component {
 
+  constructor(props){
+    super(props);
+
+    this.state = {loadingButton : false};
+  }
   componentDidMount(){
     const { navigation } = props;
   }
   _userLogin(){
     const  { email, pass} = this.props;
-    this.props.userLogin({email, pass}, this.props.navigation);
+    var type = this.props.userLogin({email, pass}, this.props.navigation);
   }
 
   render(){
+    const {loadingButton} = this.state; 
     return(
       <ImageBackground style={Styles.BgImage} source={require('../img/bg.png')}>
         <View style={Styles.Container}>
@@ -26,7 +33,7 @@ class FrmLogin extends Component {
           <View style={Styles.MidBox}>
 
             <TextInput 
-              value={props.email} 
+              value={this.props.email} 
               style={Styles.MidInput} 
               placeholder="E-mail" 
               placeholderTextColor='#fff' 
@@ -36,7 +43,7 @@ class FrmLogin extends Component {
 
             <TextInput
               secureTextEntry
-              value={props.pass} 
+              value={this.props.pass} 
               style={Styles.MidInput} 
               placeholder="Senha" 
               placeholderTextColor='#fff' 
@@ -50,7 +57,12 @@ class FrmLogin extends Component {
           </View>
 
           <View style={Styles.DownBox}>
-            <Button style={Styles.DownButton} color="#115E54" title="Acessar" onPress={() => this._userLogin()} />
+            <Button style={Styles.DownButton} 
+              color="#115E54" 
+              title="Acessar" 
+              onPress={() => {this.setState({loadingButton: true}); this._userLogin()}}  
+              loading={loadingButton}
+            />            
           </View>
         </View>
       </ImageBackground>

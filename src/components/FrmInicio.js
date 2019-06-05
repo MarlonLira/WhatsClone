@@ -28,7 +28,6 @@ class FrmInicio extends Component {
   }
 };
 
-
 FrmInicio.navigationOptions = {
   title: 'Inicio',
 }
