@@ -19,7 +19,7 @@ export default loginCss = StyleSheet.create({
 
   TopText: {
     fontSize: 25,
-    color: '#fff'
+    color: 'black'
   },
 
   MidBox: {
@@ -34,14 +34,23 @@ export default loginCss = StyleSheet.create({
   MidText: {
     fontSize: 20,
     height: 45,
-    color: '#fff'
+    color: 'black'
   },
 
   DownBox: {
     flex: 2
   },
 
+  DownBox3: {
+    flex: 4
+  },
+
+  DownBox2: {
+    flex: 1
+  },
+
   DownButton: {
-    backgroundColor: '#115E54'
+    backgroundColor: 'white',
+    color: 'white'
   }
 });

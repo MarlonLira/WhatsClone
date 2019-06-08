@@ -35,15 +35,15 @@ export const userRegister = ({name, email, pass}, navigation) => {
   }
 }
 
-export const userLogin = ({email, pass}, navigation) => {
+export const userLogin = ({email, pass}, callSucess, callError) => {
   firebase.auth().signInWithEmailAndPassword(email, pass)
     .then( user => {
           if(user){
-            navigation.navigate('Inicio')
+            callSucess(user);
           }
         }
       )
-    .catch(err => alert(err));
+    .catch(err => callError(err));
   return {
     type: 'login_user'
   }

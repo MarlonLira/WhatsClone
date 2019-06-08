@@ -2,32 +2,40 @@ import React, {Component} from 'react';
 import {View, Text, TextInput, TouchableHighlight, ImageBackground} from 'react-native';
 import { connect } from 'react-redux';
 import { modifyEmail, modifyPass, userLogin } from '../actions/AutentitacaoActions';
-import { Input, Button } from 'react-native-elements';
+import { Input, Button, ThemeProvider } from 'react-native-elements';
 
 import Styles from '../styles/FrmLoginCss';
 
 class FrmLogin extends Component {
-
   constructor(props){
     super(props);
 
     this.state = {loadingButton : false};
   }
-  componentDidMount(){
-    const { navigation } = props;
-  }
   _userLogin(){
+    const { navigation } = this.props;
     const  { email, pass} = this.props;
-    var type = this.props.userLogin({email, pass}, this.props.navigation);
+    
+    this.props.userLogin(
+      {email, pass}, 
+      () =>{
+      this.setState({loadingButton: false});
+      navigation.navigate('Inicio')
+      }, 
+      (err) => {
+        this.setState({loadingButton: false});
+        alert(err)
+      }
+    );
   }
 
   render(){
     const {loadingButton} = this.state; 
     return(
-      <ImageBackground style={Styles.BgImage} source={require('../img/bg.png')}>
+      <ImageBackground style={Styles.BgImage} source={require('../img/bg4.png')}>
         <View style={Styles.Container}>
           <View style={Styles.TopBox}>
-            <Text style={Styles.TopText}> WhatsApp Clone</Text>
+            <Text style={Styles.TopText}> NewChat</Text>
           </View>
 
           <View style={Styles.MidBox}>
@@ -57,12 +65,13 @@ class FrmLogin extends Component {
           </View>
 
           <View style={Styles.DownBox}>
-            <Button style={Styles.DownButton} 
-              color="#115E54" 
-              title="Acessar" 
-              onPress={() => {this.setState({loadingButton: true}); this._userLogin()}}  
-              loading={loadingButton}
-            />            
+            <ThemeProvider>
+              <Button style={Styles.DownButton} 
+                title="Acessar"
+                onPress={() => {this.setState({loadingButton: true}); this._userLogin()}}  
+                loading={loadingButton}
+              />
+            </ThemeProvider>            
           </View>
         </View>
       </ImageBackground>

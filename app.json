@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "WC",
-    "slug": "WhatsClone",
+    "name": "NC",
+    "slug": "newchat",
     "privacy": "public",
     "sdkVersion": "32.0.0",
     "platforms": [
@@ -24,6 +24,7 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": ""
   }
 }
