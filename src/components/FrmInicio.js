@@ -21,10 +21,6 @@ class FrmInicio extends Component {
   }
 };
 
-FrmInicio.navigationOptions = {
-  title: 'Inicio',
-}
-
 const mapStateToProps = state => ({
    email: state.AutenticacaoReducer.email,
    pass: state.AutenticacaoReducer.pass
