@@ -7,7 +7,6 @@ import {connect} from 'react-redux';
  class FrmHome extends Component {
   render() {
     return (
-      <ScrollView scrollEnabled={true} >
       <Container>
           <Content>
             <Card>
@@ -107,8 +106,6 @@ import {connect} from 'react-redux';
             </Card>
           </Content>          
       </Container>
-      </ScrollView>
-      
     );
   }
 }

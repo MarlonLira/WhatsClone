@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import Menu from './Common/Menu'
 
-import { modifyEmail, modifyPass, userLogin } from '../actions/AutentitacaoActions';
 import { Container, View } from 'native-base';
 
 
@@ -12,7 +11,7 @@ class FrmInicio extends Component {
     super(props);
   }
 
-  render() {    
+  render() {
     return (
       <Container>
         <Menu/>
@@ -26,4 +25,4 @@ const mapStateToProps = state => ({
    pass: state.AutenticacaoReducer.pass
 });
 
-export default connect(mapStateToProps, {modifyEmail, modifyPass, userLogin})(FrmInicio);
+export default connect(mapStateToProps, null)(FrmInicio);
